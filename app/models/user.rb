@@ -14,6 +14,8 @@ class User < ApplicationRecord
                           dependent: :destroy
   has_many :creators, through: :appointments, source: :creator
 
+  enum role: {admin: 0, doctor: 1, patient: 2}
+
   def create_appointment(other_user)
     active_relationships.create(recipient_id: other_user.id)
   end
