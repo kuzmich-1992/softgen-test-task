@@ -6,6 +6,5 @@ class Appointment < ApplicationRecord
 
   validates :creator_id, presence: true
   validates :recipient_id, presence: true
-  validates :creator_id, uniqueness: { scope: :recipient_id }
 end
 
