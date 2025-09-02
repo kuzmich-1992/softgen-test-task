@@ -1,0 +1,36 @@
+<h1>Profile, <%= current_user.email %></h1>
+  <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+  <div class="container">
+    <div class="column-left">
+      <h1>doctors</h1>
+      <div class="scroll-container">
+        <% User.where(role: "doctor").each do |doctor| %>
+        <div class="card border-dark mb-3">
+          <div class="card">
+            <div class="card-body">
+              <p>doctor`s email: <%= doctor.email %></p>
+              <%= button_to 'schedule a consultation',  create_appointment_path, params: { user_id: doctor.id }, class: "btn" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="column-center">
+      <h1>appointments</h1>
+      <div class="scroll-container">
+        <% Appointment.where(creator_id: current_user.id).each do |appointment| %>
+        <div class="card border-dark mb-3">
+          <div class="card">
+            <div class="card-body">
+                <p>date of create: <%= appointment.created_at %></p>
+                <p>appointment status: <%= appointment.status %>
+                <p>doctor`s name: <%= appointment.recipient.email %></p>
+                <p>recomendation: <%= appointment.recomendation %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
