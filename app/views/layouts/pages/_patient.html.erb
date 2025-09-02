@@ -16,6 +16,9 @@
           <div class="card">
             <div class="card-body">
               <p>doctor`s email: <%= doctor.email %></p>
+              <% if doctor.categories.present? %>
+                <p>doctor`s category: <%= doctor.categories.last.name %></p>
+              <% end %>
               <%= button_to 'schedule a consultation',  create_appointment_path, params: { user_id: doctor.id }, class: "btn" %>
             </div>
           </div>
