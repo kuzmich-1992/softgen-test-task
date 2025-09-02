@@ -11,7 +11,11 @@
       <% end %>
       <h1>doctors</h1>
       <div class="scroll-container">
-        <% User.where(role: "doctor").each do |doctor| %>
+        <%= form_tag filter_categories_path, method: :get do %>
+          <%= select_tag :selected_item_id, options_for_select(Category.all.map { |item| [item.name, item.id] }) %>
+          <%= submit_tag "Submit" %>
+        <% end %>
+        <% @doctors.each do |doctor| %>
         <div class="card border-dark mb-3">
           <div class="card">
             <div class="card-body">
