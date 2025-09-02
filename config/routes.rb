@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'pages/index'
   post 'appointments/create', to: 'appointments#create', as: 'create_appointment'
+  patch 'appointments/create', to: 'appointments#update', as: 'update_appointment'
 end
