@@ -32,3 +32,9 @@
       overflow-y: auto;
       border: 1px solid #ccc;
       padding: 10px;}
+
+  .card-body-alert {
+      background-color: red;}
+
+  .card-alert {
+      background-color: red;}

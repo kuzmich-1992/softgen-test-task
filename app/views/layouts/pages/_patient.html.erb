@@ -2,6 +2,13 @@
   <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
   <div class="container">
     <div class="column-left">
+      <% if flash[:notice] %>
+        <div class="card-alert">
+          <div class="card-body-alert">
+            <div class="notice"><%= flash[:notice] %></div>
+          </div>
+        </div>
+      <% end %>
       <h1>doctors</h1>
       <div class="scroll-container">
         <% User.where(role: "doctor").each do |doctor| %>
