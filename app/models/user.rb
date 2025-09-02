@@ -16,15 +16,11 @@ class User < ApplicationRecord
 
   enum role: {admin: 0, doctor: 1, patient: 2}
 
-  def create_appointment(other_user)
-    active_relationships.create(recipient_id: other_user.id)
+  def create_appointment(current_user, other_user)
+    Appointment.create!(creator_id: current_user.id, recipient_id: other_user.id)
   end
 
-  def delete_appointment(other_user)
-    active_relationships.find_by(recipient_id: other_user.id).destroy
-  end
-
-  def appointment_present?(other_user)
-    recipients.include?(other_user)
+  def delete_appointment(current_user, other_user)
+    Appointment.appointments.find_by(creator_id: current_user.id, recipient_id: other_user.id).destroy
   end
 end

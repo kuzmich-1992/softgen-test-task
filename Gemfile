@@ -33,6 +33,10 @@ gem "redis", "~> 4.0"
 # Basic authentication
 gem 'devise'
 
+# Debugger
+
+gem 'pry'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
