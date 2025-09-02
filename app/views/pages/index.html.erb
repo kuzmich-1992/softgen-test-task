@@ -20,7 +20,7 @@
     <div class="column-center">
       <h1>appointments</h1>
       <div class="scroll-container">
-        <% Appointment.all.each do |appointment| %>
+        <% Appointment.where(creator_id: current_user.id).each do |appointment| %>
         <div class="card border-dark mb-3">
           <div class="card">
             <div class="card-body">
