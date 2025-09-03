@@ -1,0 +1,40 @@
+%h1
+  Patient`s profile, #{current_user.email}
+= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }
+.container
+  .column-left
+    - if flash[:notice]
+      .card-alert
+        .card-body-alert
+          .notice= flash[:notice]
+    %h1 doctors
+    .scroll-container
+      = form_tag  pages_index_path, method: :get do
+        = select_tag :search_category, options_for_select(Category.all.map { |category| [category.name] })
+        = submit_tag "Submit"
+      - @doctors.each do |doctor|
+        .card.border-dark.mb-3
+          .card
+            .card-body
+              %p
+                doctor`s email: #{doctor.email}
+              - if doctor.categories.present?
+                %p
+                  doctor`s category: #{doctor.categories.last.name}
+              - if can? :create_appointment, Appointment
+                = button_to 'schedule a consultation',  create_appointment_path, params: { user_id: doctor.id }, class: "btn"
+  .column-center
+    %h1 appointments
+    .scroll-container
+      - Appointment.where(creator_id: current_user.id).each do |appointment|
+        .card.border-dark.mb-3
+          .card
+            .card-body
+              %p
+                date of create: #{appointment.created_at}
+              %p
+                appointment status: #{appointment.status}
+              %p
+                doctor`s name: #{appointment.recipient.email}
+              %p
+                recomendation: #{appointment.recomendation}

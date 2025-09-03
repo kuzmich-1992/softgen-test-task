@@ -1,0 +1,44 @@
+%h1
+  Admin profile, #{current_user.email}
+= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }
+.container
+  .column-left
+    %h1 patients
+    .scroll-container-admin
+      - User.where(role: "patient").each do |patient|
+        .card.border-dark.mb-3
+          .card
+            .card-body
+              %p
+                patient`s name: #{patient.email}
+  .column-center
+    %h1 doctors
+    .scroll-container-admin
+      - User.where(role: "doctor").each do |doctor|
+        .card.border-dark.mb-3
+          .card
+            .card-body
+              %p
+                doctor`s name: #{doctor.email}
+              %p
+                doctor`s category: #{doctor.categories.last.name}
+              - if can? :assign_category, Category
+                = form_tag  assign_category_path, method: :patch do
+                  = select_tag :assign_category, options_for_select(Category.all.map { |category| [category.name] })
+                  = hidden_field_tag :doctor_id, doctor.id
+                  = submit_tag "Submit"
+  .column-right
+    %h1 categories
+    - if can? :create_category, Category
+      = form_for(:category, as: @category, url: create_category_path, method: :post) do |f|
+        %div
+          = f.label :enter_name_of_category_for_create
+          = f.text_field :name
+          = f.submit
+    .scroll-container-admin
+      - Category.all.each do |category|
+        .card.border-dark.mb-3
+          .card
+            .card-body
+              %p
+                category name: #{category.name}
