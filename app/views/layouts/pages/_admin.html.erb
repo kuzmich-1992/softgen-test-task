@@ -22,7 +22,13 @@
           <div class="card border-dark mb-3">
             <div class="card">
               <div class="card-body">
-                <p>patient`s name: <%= doctor.email %></p>
+                <p>doctor`s name: <%= doctor.email %></p>
+                <p>doctor`s category: <%= doctor.categories.last.name %></p>
+                <%= form_tag  assign_category_path, method: :patch do %>
+                  <%= select_tag :assign_category, options_for_select(Category.all.map { |category| [category.name] }) %>
+                  <%= hidden_field_tag :doctor_id, doctor.id %>
+                  <%= submit_tag "Submit" %>
+                <% end %>
               </div>
             </div>
           </div>

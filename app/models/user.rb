@@ -27,8 +27,14 @@ class User < ApplicationRecord
     Appointment.appointments.find_by(creator_id: current_user.id, recipient_id: other_user.id).destroy
   end
   
-  def add_doctor_to_ctegory(doctor_id, category_name)
-    User.find(doctor_id).categories << Category.find_by(name: category_name)
+  def add_doctor_to_ctegory(doctor, category_name)
+    category = Category.find_by(name: category_name)
+    if doctor.categories.blank?
+      doctor.categories << category
+    elsif doctor.categories.present?
+      doctor.categories.clear
+      doctor.categories << category
+    end
   end
 
   def remove_doctor_from_ctegory(doctor_id, category_name)

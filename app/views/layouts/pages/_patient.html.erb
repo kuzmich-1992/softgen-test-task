@@ -12,7 +12,7 @@
       <h1>doctors</h1>
       <div class="scroll-container">
         <%= form_tag  pages_index_path, method: :get do %>
-          <%= select_tag :search_category, options_for_select(Category.all.map { |item| [item.name] }) %>
+          <%= select_tag :search_category, options_for_select(Category.all.map { |category| [category.name] }) %>
           <%= submit_tag "Submit" %>
         <% end %>
         <% @doctors.each do |doctor| %>

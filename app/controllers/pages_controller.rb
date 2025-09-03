@@ -11,4 +11,10 @@ class PagesController < ApplicationController
     @category = Category.create(name: params[:category][:name])
     redirect_to root_path
   end
+
+  def assign_category
+    @doctor = User.find(params[:doctor_id])
+    @doctor.add_doctor_to_ctegory(@doctor, params[:assign_category])
+    redirect_to root_path
+  end
 end

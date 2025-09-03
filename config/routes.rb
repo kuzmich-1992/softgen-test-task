@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post 'pages/create_category', to: 'pages#create_category', as: 'create_category'
   post 'appointments/create', to: 'appointments#create', as: 'create_appointment'
   patch 'appointments/create', to: 'appointments#update', as: 'update_appointment'
+  patch 'pages/assign_category', to: 'pages#assign_category', as: 'assign_category'
 end
