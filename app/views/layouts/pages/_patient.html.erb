@@ -23,7 +23,9 @@
               <% if doctor.categories.present? %>
                 <p>doctor`s category: <%= doctor.categories.last.name %></p>
               <% end %>
-              <%= button_to 'schedule a consultation',  create_appointment_path, params: { user_id: doctor.id }, class: "btn" %>
+              <% if can? :create_appointment, Appointment %>
+                <%= button_to 'schedule a consultation',  create_appointment_path, params: { user_id: doctor.id }, class: "btn" %>
+              <% end %>
             </div>
           </div>
         </div>

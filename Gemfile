@@ -34,8 +34,10 @@ gem "redis", "~> 4.0"
 gem 'devise'
 
 # Debugger
-
 gem 'pry'
+
+# Make abilities dependent the roles
+gem 'cancancan'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
