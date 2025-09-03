@@ -27,13 +27,15 @@
                 <p>appointment status: <%= appointment.status %>
                 <p>patient`s name: <%= appointment.creator.email %></p>
                 <p>recomendation: <%= appointment.recomendation %></p>
-                <% if appointment.status == "open" %>
-                  <%= form_with url: update_appointment_path(@appointment), method: :patch do |form| %>
-                    <%= form.text_field :recomendation %>
-                    <%= form.hidden_field :id, value: appointment.id %>
-                    <%= form.submit "Update recomedation" %>
+                <% if can? :update_appointment, Appointment %>
+                  <% if appointment.status == "open" %>
+                    <%= form_with url: update_appointment_path(@appointment), method: :patch do |form| %>
+                      <%= form.text_field :recomendation %>
+                      <%= form.hidden_field :id, value: appointment.id %>
+                      <%= form.submit "Update recomedation" %>
+                    <% end %>
                   <% end %>
-                <%end%>
+                <% end %>
               </div>
             </div>
           </div>
