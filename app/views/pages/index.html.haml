@@ -1,0 +1,10 @@
+- if user_signed_in?
+  - if current_user.role == "patient"
+    = render partial: '/layouts/pages/patient'
+  - elsif current_user.role == "doctor"
+    = render partial: '/layouts/pages/doctor'
+  - elsif current_user.role == "admin"
+    = render partial: '/layouts/pages/admin'
+- else
+  %h1 please enter to Profile
+  = link_to 'Sign in', new_user_session_path
