@@ -31,6 +31,13 @@
     </div>
     <div class="column-right">
     <h1>categories</h1>
+      <%= form_for(:category, as: @category, url: create_category_path, method: :post) do |f| %>
+        <div>
+          <%= f.label :enter_name_of_category_for_create %>
+          <%= f.text_field :name %>
+          <%= f.submit %>
+        </div>
+      <% end %>
       <div class="scroll-container-admin">
         <% Category.all.each do |category| %>
           <div class="card border-dark mb-3">

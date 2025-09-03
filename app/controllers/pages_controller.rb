@@ -6,4 +6,9 @@ class PagesController < ApplicationController
       @doctors = User.where(role: "doctor")
     end
   end
+
+  def create_category
+    @category = Category.create(name: params[:category][:name])
+    redirect_to root_path
+  end
 end
