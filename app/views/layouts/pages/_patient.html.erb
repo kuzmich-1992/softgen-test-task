@@ -11,8 +11,8 @@
       <% end %>
       <h1>doctors</h1>
       <div class="scroll-container">
-        <%= form_tag filter_categories_path, method: :get do %>
-          <%= select_tag :selected_item_id, options_for_select(Category.all.map { |item| [item.name, item.id] }) %>
+        <%= form_tag  pages_index_path, method: :get do %>
+          <%= select_tag :search_category, options_for_select(Category.all.map { |item| [item.name] }) %>
           <%= submit_tag "Submit" %>
         <% end %>
         <% @doctors.each do |doctor| %>
