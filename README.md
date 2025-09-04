@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* ruby 2.7.4
 
-Things you may want to cover:
+* Rails 7.0.4.2
 
-* Ruby version
+* for clone app you need run 
+  git clone https://github.com/kuzmich-1992/softgen-test-task.git
 
-* System dependencies
+* run bundle install
 
-* Configuration
+* for database initialization and install seeds: 
+  1) configure database.yml file
+  2) rails db:create
+  3) rails db:migrate
+  4) rails db:seed
 
-* Database creation
+* To run the test - bundle exec rspec
 
-* Database initialization
+* Credentials of Admin (appear after run seeds) 
+  Doctor`s categories created but not preseted - assign it for doctors from admin account
+  admin email: "admin@gmail.com", phone: "38096980000", password: "1234567", role: "admin"
 
-* How to run the test suite
+* Creds other users (appear after run seeds)
+  doctor_1 email: "doctor1@gmail.com", phone: "38096981111", password: "1234567", role: "doctor"
+  doctor_2 email: "doctor2@gmail.com", phone: "38096981112", password: "1234567", role: "doctor"
+  doctor_3 email: "doctor3@gmail.com", phone: "38096981113", password: "1234567", role: "doctor"
+  patient_1 email: "patient1@gmail.com", phone: "38096981114", password: "1234567", role: "patient"
+  patient_2 email: "patient2@gmail.com", phone: "38096981115", password: "1234567", role: "patient"
+  patient_3 email: "patient3@gmail.com", phone: "38096981116", password: "1234567", role: "patient"
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run app - rails server

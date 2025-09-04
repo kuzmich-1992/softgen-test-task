@@ -1,7 +1,8 @@
 %h1
   Doctor`s profile, #{current_user.email}
 %h2
-  Doctor`s category, #{current_user.categories.last.name}
+  - if current_user.categories.present?
+    Doctor`s category, #{current_user.categories.last.name}
   = link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }
   .container
     .column-center

@@ -21,12 +21,14 @@
               %p
                 doctor`s name: #{doctor.email}
               %p
+              - if doctor.categories.present?
                 doctor`s category: #{doctor.categories.last.name}
+              %p
               - if can? :assign_category, Category
                 = form_tag  assign_category_path, method: :patch do
                   = select_tag :assign_category, options_for_select(Category.all.map { |category| [category.name] })
                   = hidden_field_tag :doctor_id, doctor.id
-                  = submit_tag "Submit"
+                  = submit_tag "change category"
   .column-right
     %h1 categories
     - if can? :create_category, Category
