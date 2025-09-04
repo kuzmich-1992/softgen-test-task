@@ -42,6 +42,9 @@ gem 'cancancan'
 # Convert to haml
 gem 'haml-rails'
 
+#Faker
+gem 'faker'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -65,6 +68,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   # Rspec test
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :test do

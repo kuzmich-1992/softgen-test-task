@@ -1,4 +1,3 @@
-# spec/controllers/appointments_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe AppointmentsController, type: :controller do
@@ -36,7 +35,7 @@ RSpec.describe AppointmentsController, type: :controller do
   describe "PATCH #update" do
     let(:current_user) { User.create(email: "patient1@gmail.com", phone: "38096981114", password: "1234567", role: "patient") }
     let(:doctor) { User.create(email: "doctor1@gmail.com", phone: "38096981111", password: "1234567", role: "doctor") }
-    let!(:appointment) { Appointment.create(creator_id: current_user.id, recipient_id: doctor.id) }
+    let(:appointment) { Appointment.create(creator_id: current_user.id, recipient_id: doctor.id) }
 
     it "updates appointment with recommendation and closes it" do
       patch :update, params: { id: appointment.id, recomendation: "Take rest" }
