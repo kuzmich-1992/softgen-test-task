@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def delete_appointment(current_user, other_user)
-    Appointment.appointments.find_by(creator_id: current_user.id, recipient_id: other_user.id).destroy
+    Appointment.find_by(creator_id: current_user.id, recipient_id: other_user.id).destroy
   end
   
   def add_doctor_to_ctegory(doctor, category_name)
@@ -41,7 +41,7 @@ class User < ApplicationRecord
     end
   end
 
-  def remove_doctor_from_ctegory(doctor_id, category_name)
+  def remove_doctor_from_ctegory(doctor_id)
     User.find(doctor_id).categories.clear
   end
 
