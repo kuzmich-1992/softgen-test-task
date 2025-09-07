@@ -19,6 +19,10 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :categories
 
+  validates :email, presence: true, uniqueness: true
+  
+  validates :phone, presence: true, uniqueness: true
+
   validates_format_of :phone, with: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/, :multiline => true, :allow_blank => true
   
   enum role: {admin: 0, doctor: 1, patient: 2}
